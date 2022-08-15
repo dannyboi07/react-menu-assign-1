@@ -1,0 +1,150 @@
+.header-navbar {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+}
+.header-navbar__ctn {
+  position: relative;
+  width: 90%;
+  list-style-type: none;
+  padding: 0 5em;
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-evenly;
+}
+.header-navbar__ctn > li {
+  position: relative;
+  text-align: center;
+  border: 1px solid red;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 0 5em;
+}
+.header-navbar__ctn > li::after {
+  display: inline-block;
+  content: url("../../assets/arrow-down.svg");
+  margin-left: 0.5em;
+  transition: transform 0.25s;
+}
+.header-navbar__ctn > li:hover::after {
+  transform: rotate(-180deg);
+}
+.header-navbar__ctn__hover-menu-ctn {
+  width: 60vw;
+  height: 300px;
+  position: absolute;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  border: 1px solid green;
+  border-radius: 0.5em;
+  top: 2.5em;
+  overflow: hidden;
+  display: flex;
+  transform-origin: top center;
+  transform: perspective(2000px) rotateX(-45deg);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+}
+.header-navbar__ctn__hover-menu-ctn > div {
+  position: absolute;
+  width: calc(100% - 3em);
+  height: calc(100% - 3em);
+  padding: 1.5em;
+  transition: left 0.4s, opacity 0.15s;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child {
+  display: flex;
+  justify-content: space-evenly;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div > h3 {
+  text-align: center;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div > div {
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  transition: -webkit-backdrop-filter 0.25s;
+  transition: backdrop-filter 0.25s;
+  transition: backdrop-filter 0.25s, -webkit-backdrop-filter 0.25s;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div > div:hover {
+  cursor: pointer;
+  -webkit-backdrop-filter: contrast(85%);
+          backdrop-filter: contrast(85%);
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div {
+  position: relative;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div::after {
+  position: absolute;
+  padding: 1em;
+  top: 0;
+  right: 0;
+  content: url("../../assets/arrow-right.svg");
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div > div {
+  position: absolute;
+  width: 250px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  right: 0;
+  border-radius: 0.5em;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 1000;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div > div > div {
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  transition: -webkit-backdrop-filter 0.25s;
+  transition: backdrop-filter 0.25s;
+  transition: backdrop-filter 0.25s, -webkit-backdrop-filter 0.25s;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div > div > div:hover {
+  cursor: pointer;
+  -webkit-backdrop-filter: contrast(85%);
+          backdrop-filter: contrast(85%);
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div:first-of-type > div {
+  top: 0;
+  transform: scale(0);
+  transform-origin: right 0;
+  transition: transform 0.25s;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div:last-child > div {
+  bottom: 0;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div:hover > div {
+  transform: scale(1);
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div:nth-child(3) > div {
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  transform-origin: center right;
+  transition: transform 0.25s;
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div:last-child > div:nth-child(3):hover > div {
+  transform: translateY(-50%) scale(1);
+}
+.header-navbar__ctn__hover-menu-ctn > div:first-child > div {
+  border-radius: 0.5em;
+  width: 50%;
+}
+.header-navbar__ctn__hover-menu-ctn--open {
+  transform: rotateX(0deg);
+  opacity: 1;
+}/*# sourceMappingURL=navbar.css.map */

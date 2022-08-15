@@ -1,0 +1,204 @@
+@mixin menu-links {
+    & > div {
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+        transition: backdrop-filter 0.25s;
+
+        &:hover {
+            cursor: pointer;
+            backdrop-filter: contrast(85%);
+        }
+    }
+}
+
+.header-navbar {
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    align-items: center;
+
+    &__ctn {
+        position: relative;
+        width: 90%;
+        list-style-type: none;
+        padding: 0 5em;
+        // padding-left: 5em;
+        border: 1px solid green;
+        
+        display: flex;
+        justify-content: space-evenly;
+        // align-items: center;
+
+        & > li {
+            position: relative;
+            text-align: center;
+            // flex-grow: 1;
+            border: 1px solid red;
+            user-select: none;
+            padding: 0 5em;
+
+            &::after {
+                display: inline-block;
+                content: url("../../assets/arrow-down.svg");
+                margin-left: 0.5em;
+                transition: transform 0.25s;
+            }
+
+            // & > div {
+            //     position: absolute;
+            //     border: 1px solid blue;
+
+            //     top: 2.5em;
+            //     left: 50%;
+            //     transition: transform 0.25s;
+            // }
+
+            &:hover {
+                // cursor: pointer;
+                &::after {
+                    transform: rotate(-180deg);
+                }
+
+                // & > div {
+                //     // transform: scale(1,1) translateX(-50%);
+                // }
+            }
+        }
+
+        // Hovering menu container
+        &__hover-menu-ctn {
+            width: 60vw;
+            height: 300px;
+            position: absolute;
+            min-height: fit-content;   
+            border: 1px solid green;
+
+            border-radius: 0.5em;
+            // background-color: grey;
+            top: 2.5em;
+
+            overflow: hidden;
+
+            display: flex;
+
+            transform-origin: top center;
+            // transform: rotateX(-45deg) scale(0.9);
+            transform: perspective(2000px) rotateX(-45deg); //scaleY(0.5);
+            opacity: 0;
+            transition: transform 1s, opacity 1s;
+        
+            // Menu sliding ctns
+            & > div {
+                position: absolute;
+                width: calc(100% - 3em);
+                height: calc(100% - 3em);
+
+                padding: 1.5em;
+                transition: left 0.4s, opacity 0.15s;
+                // border: 1px solid blue;
+
+                // Leftmost ctn [0]
+                &:first-child {
+                    display: flex;
+                    justify-content: space-evenly;
+                    column-gap: 1em;
+                    
+                    // Left & right ctn common styles
+                    & > div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        & > h3 {
+                            text-align: center;
+                        }
+                        
+                        @include menu-links()
+                    }
+
+                    // Right ctn
+                    & > div:last-child {
+                        & > div {
+                            position: relative;
+
+                            &::after {
+                                position: absolute;
+                                // border: 1px solid black;
+                                padding: 1em;
+                                top: 0; // 50%;
+                                right: 0;
+                                // transform: translateY(-50%);
+                                content: url("../../assets/arrow-right.svg");
+                            }
+                            
+                            // Sub menu
+                            & > div {
+                                position: absolute;
+                                width: 250px;
+                                height: fit-content;
+                                right: 0;
+                                border-radius: 0.5em;
+
+                                background-color: white;
+                                border: 1px solid black;
+
+                                // transform-origin: 100% 0%;
+
+                                z-index: 1000;
+
+                                @include menu-links()
+                            }
+
+                            
+                            &:first-of-type > div {
+                                top: 0;
+                                transform: scale(0);
+                                // background-color: red;
+                                transform-origin: right 0;
+                                transition: transform 0.25s;
+                            }
+                            
+                            &:last-child > div {
+                                bottom: 0;
+                                transform: scale(0);
+                                transform-origin: bottom right;
+                                transition: transform 0.25s;
+                            }
+
+                            &:hover > div {
+                                transform: scale(1);
+                            }
+
+                            &:nth-child(3) {
+
+                                & > div {
+                                    
+                                    top: 50%;
+                                    transform: translateY(-50%) scale(0);
+                                    
+                                    transform-origin: center right;
+                                    transition: transform 0.25s;
+                                }
+
+                                &:hover > div {
+                                    transform: translateY(-50%) scale(1);
+                                }
+                            }
+                        }
+                    }
+                    
+                    & > div {
+                        border-radius: 0.5em;
+                        width: 50%;
+                    }
+                }
+                // color: white;
+            }
+            
+            &--open {
+                transform: rotateX(0deg); 
+                opacity: 1;
+            }
+        }
+    }
+}
